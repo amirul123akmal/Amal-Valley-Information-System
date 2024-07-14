@@ -1,0 +1,25 @@
+body {
+    background-color: #40E0D0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+
+.container-fluid{
+    width: 40%;
+}
+
+.pass{
+    cursor: pointer;
+}
+
+@media (max-width: 800px) {
+    .container-fluid{
+        width: 100%;
+    }
+}
+
+#topimg{
+    width: 80%;
+}

@@ -1,0 +1,15 @@
+.new-activity{
+    background-color: #00c2c2;
+}
+
+.bi{
+    cursor: pointer;
+}
+
+.status{
+   text-transform: capitalize; 
+}
+
+.table{
+    width: 95%;
+}

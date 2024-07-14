@@ -1,0 +1,61 @@
+#sidebar {
+    width: 25%;
+    background-color: rgb(0, 229, 255);
+}
+
+@media (max-width: 800px) {
+    #sidebar {
+        width: 55%;
+    }
+}
+
+.nav-item{
+    display: flex;
+    align-items: center;
+}
+
+#sidebaricon{
+    font-size: 1.5rem;
+}
+
+html{
+    scrollbar-gutter: stable;
+}
+
+.logout {
+    margin: 20px;
+    /* Adjust the margin as needed */
+    color: white;
+    /* Match the text color of offcanvas-body */
+    cursor: pointer;
+    /* Add a pointer cursor */
+}
+
+#sidebartemp {
+    background-color: rgb(0, 229, 255);
+    position: fixed;
+    width: 50px;
+    height: 100%;
+    cursor: pointer;
+}
+
+.burger {
+    font-size: 35px;
+    cursor: pointer;
+}
+
+.burger-open {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+}
+
+.mainbody{
+    padding-left: 60px;
+}
+
+.hilang{
+    display: none;
+}

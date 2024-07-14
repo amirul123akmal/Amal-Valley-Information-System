@@ -1,0 +1,28 @@
+.topicon{
+    font-size: 2rem;
+}
+
+hr{
+    border: 2px solid black;
+}
+
+.export, .card-header, .card-footer{
+    background-color: #00c2c2;
+}
+
+.card-body{
+    background-color: #00a29c;
+}
+
+.export:hover{
+    background-color: #017777;
+    color: wheat;
+}
+
+.information{
+    width: 80%;
+}
+
+.card-footer{
+    cursor: pointer;
+}

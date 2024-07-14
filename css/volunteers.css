@@ -1,0 +1,59 @@
+.card-area {
+    width: 60%;
+}
+
+@media (max-width: 900px) {
+    .card-area {
+        width: 90%;
+    }
+}
+
+.input-group-text{
+    width: 60px;
+}
+
+#imagedisplay{
+    width: 200px;
+    height: 200px;
+}
+
+.carddrop {
+    background-color: #00c2c2;
+    height: 150px;
+    border-radius: 0 0 8px 8px;
+    position: relative;
+    transform: translateY(-75%);
+    cursor: pointer;
+    display: fixed;
+    transition: transform 0.5s;
+}
+
+.carddrop:hover{
+    transform: translateY(-30%);
+}
+
+.carddrop:hover .arrowarea{
+    transform: rotate(180deg);
+}
+
+.arrowarea {
+    font-size: 1.3rem;
+    cursor: pointer;
+    transition: transform 0.5s;
+}
+
+.btn-join {
+    background-color: #007699;
+    color: white;
+}
+
+.btn:hover {
+    background-color: #007599b3;
+    color: black;
+}
+
+.card {
+    background-color: #00a29c;
+    border-radius: 8px 8px 16px 16px;
+    z-index: 1;
+}
