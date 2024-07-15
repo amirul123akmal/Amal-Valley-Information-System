@@ -126,10 +126,10 @@ class database
         throw new Exception("Username/Email has already taken");
     }
 
-    public function registerActivity($name, $place, $date, $time)
+    public function registerActivity($name, $place, $date, $timestart, $timend)
     {
         $datetime = date('Y-m-d H:i:s');
-        $prompt = "INSERT INTO activity VALUES(null, '$name', '$place', '$date', '$time', 'Not Yet', '$datetime', '')";
+        $prompt = "INSERT INTO activity VALUES(null, '$name', '$place', '$date', '$timestart', '$timend', 'Not Yet', '$datetime', '')";
         $result = $this->query($prompt);
         return;
     }

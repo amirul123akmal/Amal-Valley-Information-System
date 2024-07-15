@@ -1,5 +1,5 @@
 .card-area {
-    width: 60%;
+    width: 70%;
 }
 
 @media (max-width: 900px) {
@@ -9,7 +9,7 @@
 }
 
 .input-group-text{
-    width: 60px;
+    width: 100px;
 }
 
 #imagedisplay{

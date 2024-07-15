@@ -17,7 +17,8 @@ function submit()
 }
 
 try {
-    require_once "database.php";
+    require_once "./database.php";
+    require_once "./fileManager.php";
     $parts = explode("/", $_SERVER['REQUEST_URI']);
     // "parts" = array
 
@@ -44,6 +45,7 @@ try {
     }
 
     $database = new database();
+    $filing = new fileManager($database);
     // The CRUD Functionality
     // CREATE
     if (strcmp($parts[1], 'create') == 0) {
@@ -58,55 +60,14 @@ try {
                 $database->register($data['type'], $data['username'], $data['password'], $data['email'], $data['state'], $data['phone']);
                 break;
             case 'registeractivity':
-                $database->registerActivity($data['name'], $data['place'], $data['date'], $data['time']);
+                $database->registerActivity($data['name'], $data['place'], $data['date'], $data['timestart'], $data['timeend']);
                 break;
             case 'admin':
                 $database->addAdmin($data['name'], $data['pass'], $data['email'], $data['state'], $data['phone']);
                 break;
             case 'image':
                 if (isset($_FILES['image']) && $_FILES['image']['error'] == UPLOAD_ERR_OK) {
-                    $fileTmpPath = $_FILES['image']['tmp_name'];
-                    $fileName = $_FILES['image']['name'];
-                    $fileSize = $_FILES['image']['size'];
-                    $fileType = $_FILES['image']['type'];
-                    $fileNameCmps = explode(".", $fileName);
-                    $fileExtension = strtolower(end($fileNameCmps));
-
-                    // Sanitize file name
-                    $newFileName = md5(time() . $fileName) . '.' . $fileExtension;
-
-                    // Check if the file type is allowed (optional)
-                    $allowedfileExtensions = ['jpg', 'png', 'jpeg', 'webm'];
-                    if (in_array($fileExtension, $allowedfileExtensions)) {
-                        // Directory where the file will be moved
-                        $uploadFileDir = dirname(__FILE__, 2) . '/img/activity/';
-                        $dest_path = $uploadFileDir . $newFileName;
-
-                        // Check if directory exists and is writable
-                        if (!is_dir($uploadFileDir)) {
-                            throw new Exception('Upload directory does not exist. : ');
-                        }
-
-                        if (!is_writable($uploadFileDir)) {
-                            throw new Exception('Upload directory is not writable.');
-                        }
-
-                        // Check if the temporary file exists
-                        if (!file_exists($fileTmpPath)) {
-                            throw new Exception('Temporary file does not exist.');
-                        }
-
-                        if (move_uploaded_file($fileTmpPath, $dest_path)) {
-                            // Assuming $database is already defined and initialized
-                            $database->updateSingleData("activity", (int) $database->getLatestIndex("activity", "activityid"), "activityimage", $newFileName);
-                            send("Return", 'File is successfully uploaded.');
-                        } else {
-                            error_log('Error moving uploaded file: ' . print_r(error_get_last(), true));
-                            throw new Exception('There was some error moving the file to upload directory.');
-                        }
-                    } else {
-                        throw new Exception('Upload failed. Allowed file types: ' . implode(',', $allowedfileExtensions));
-                    }
+                    $filing->storeImage($_FILES['image']);
                 } else {
                     $message = 'There is some error in the file upload. Please check the following error.<br>';
                     $message .= 'Error:' . $_FILES['image']['error'];
