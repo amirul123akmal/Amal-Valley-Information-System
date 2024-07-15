@@ -155,9 +155,9 @@ class database
         return "Update Success";
     }
 
-    public function updateActivity($primarykey, $name, $place, $date, $status, $time)
+    public function updateActivity($primarykey, $name, $place, $date, $status, $timestart, $timeend)
     {
-        $prompt = "UPDATE activity SET activityname = '$name', activityplace='$place', activitystatus='$status', activitydate='$date', activitytime='$time' WHERE activityid = '$primarykey';";
+        $prompt = "UPDATE activity SET activityname = '$name', activityplace='$place', activitystatus='$status', activitydate='$date', activitytimestart='$timestart', activitytimeend='$timeend' WHERE activityid = '$primarykey';";
         $this->query($prompt);
         return "Update Success";
     }

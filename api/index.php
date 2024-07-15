@@ -121,7 +121,7 @@ try {
                 send('Return', $database->updateSingleData($data['table'], $data['primarykey'], $data['column'], $data['value']));
                 break;
             case 'activity':
-                send('Return', $database->updateActivity($data['key'], $data['name'], $data['place'], $data['date'], $data['status'], $data['time']));
+                send('Return', $database->updateActivity($data['key'], $data['name'], $data['place'], $data['date'], $data['status'], $data['timestart'], $data['timeend']));
                 break;
             case 'beneficiaries':
             case 'volunteer':
